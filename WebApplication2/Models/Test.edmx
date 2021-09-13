@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище u1436679_VolEventsBaseModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Region" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Library">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Link" Type="varchar(max)" />
+          <Property Name="DateDelete" Type="datetime2" Precision="7" />
+          <Property Name="Content" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" />
+          <Property Name="Family" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="int" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="50" />
+          <Property Name="ImageId" Type="int" />
+          <Property Name="DateReg" Type="datetime2" Precision="7" />
+          <Property Name="DateDelete" Type="datetime2" Precision="7" />
+          <Property Name="Guid" Type="varchar" MaxLength="50" />
+          <Property Name="Verifyed" Type="bit" Nullable="false" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserCheckCodeRef">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="CheckCode" Type="varchar" MaxLength="50" />
+          <Property Name="TimeSend" Type="datetime2" Precision="7" />
+          <Property Name="TimeValid" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="UserMac">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="MacAddress" Type="varchar(max)" />
+          <Property Name="DateChange" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="VolEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar(max)" />
+          <Property Name="Place" Type="varchar" MaxLength="50" />
+          <Property Name="StartDT" Type="datetime2" Precision="7" />
+          <Property Name="EndDT" Type="datetime2" Precision="7" />
+          <Property Name="Length" Type="datetimeoffset" Precision="7" />
+          <Property Name="ImageId" Type="int" />
+          <Property Name="Content" Type="varchar(max)" />
+          <Property Name="NumUsers" Type="int" />
+          <Property Name="Org" Type="varchar(max)" />
+          <Property Name="Type" Type="varchar(max)" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="Importants" Type="varchar(max)" />
+          <Property Name="Longtitude" Type="varchar" MaxLength="20" />
+          <Property Name="Latitude" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="VolEventToUserRef">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="VolEventId" Type="int" />
+          <Property Name="Role" Type="int" />
+          <Property Name="DateConnect" Type="datetime2" Precision="7" />
+          <Property Name="DateDisconnect" Type="datetime2" Precision="7" />
+          <Property Name="DateDelete" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="VolImageToEventRef">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VolEventId" Type="int" />
+          <Property Name="Image" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="VolImg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Link" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="VolOrganization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="int" />
+          <Property Name="ImageId" Type="int" />
+        </EntityType>
+        <EntityType Name="VolOrgToUserRef">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="VolOrgId" Type="int" />
+          <Property Name="Role" Type="int" />
+          <Property Name="DateConnect" Type="datetime2" Precision="7" />
+          <Property Name="DateDisconnect" Type="datetime2" Precision="7" />
+          <Property Name="DateDelete" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="Хранилище u1436679_VolEventsBaseModelContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Library" EntityType="Self.Library" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserCheckCodeRef" EntityType="Self.UserCheckCodeRef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMac" EntityType="Self.UserMac" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VolEvent" EntityType="Self.VolEvent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VolEventToUserRef" EntityType="Self.VolEventToUserRef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VolImageToEventRef" EntityType="Self.VolImageToEventRef" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VolImg" EntityType="Self.VolImg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VolOrganization" EntityType="Self.VolOrganization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VolOrgToUserRef" EntityType="Self.VolOrgToUserRef" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="u1436679_VolEventsBaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Library">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateDelete" Type="DateTime" Precision="7" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Family" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ImageId" Type="Int32" />
+          <Property Name="DateReg" Type="DateTime" Precision="7" />
+          <Property Name="DateDelete" Type="DateTime" Precision="7" />
+          <Property Name="Guid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Verifyed" Type="Boolean" Nullable="false" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserCheckCodeRef">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="CheckCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TimeSend" Type="DateTime" Precision="7" />
+          <Property Name="TimeValid" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="UserMac">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="MacAddress" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="DateChange" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="VolEvent">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Place" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StartDT" Type="DateTime" Precision="7" />
+          <Property Name="EndDT" Type="DateTime" Precision="7" />
+          <Property Name="Length" Type="DateTimeOffset" Precision="7" />
+          <Property Name="ImageId" Type="Int32" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NumUsers" Type="Int32" />
+          <Property Name="Org" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Importants" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Longtitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VolEventToUserRef">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="VolEventId" Type="Int32" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="DateConnect" Type="DateTime" Precision="7" />
+          <Property Name="DateDisconnect" Type="DateTime" Precision="7" />
+          <Property Name="DateDelete" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityType Name="VolImageToEventRef">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VolEventId" Type="Int32" />
+          <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="VolImg">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VolOrganization">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="Int32" />
+          <Property Name="ImageId" Type="Int32" />
+        </EntityType>
+        <EntityType Name="VolOrgToUserRef">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="VolOrgId" Type="Int32" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="DateConnect" Type="DateTime" Precision="7" />
+          <Property Name="DateDisconnect" Type="DateTime" Precision="7" />
+          <Property Name="DateDelete" Type="DateTime" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="u1436679_VolEventsBaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Library" EntityType="Self.Library" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <EntitySet Name="UserCheckCodeRef" EntityType="Self.UserCheckCodeRef" />
+          <EntitySet Name="UserMac" EntityType="Self.UserMac" />
+          <EntitySet Name="VolEvent" EntityType="Self.VolEvent" />
+          <EntitySet Name="VolEventToUserRef" EntityType="Self.VolEventToUserRef" />
+          <EntitySet Name="VolImageToEventRef" EntityType="Self.VolImageToEventRef" />
+          <EntitySet Name="VolImg" EntityType="Self.VolImg" />
+          <EntitySet Name="VolOrganization" EntityType="Self.VolOrganization" />
+          <EntitySet Name="VolOrgToUserRef" EntityType="Self.VolOrgToUserRef" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище u1436679_VolEventsBaseModelContainer" CdmEntityContainer="u1436679_VolEventsBaseEntities">
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Library">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.Library">
+              <MappingFragment StoreEntitySet="Library">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="DateDelete" ColumnName="DateDelete" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Role1" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Family" ColumnName="Family" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="DateReg" ColumnName="DateReg" />
+                <ScalarProperty Name="DateDelete" ColumnName="DateDelete" />
+                <ScalarProperty Name="Guid" ColumnName="Guid" />
+                <ScalarProperty Name="Verifyed" ColumnName="Verifyed" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserCheckCodeRef">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.UserCheckCodeRef">
+              <MappingFragment StoreEntitySet="UserCheckCodeRef">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CheckCode" ColumnName="CheckCode" />
+                <ScalarProperty Name="TimeSend" ColumnName="TimeSend" />
+                <ScalarProperty Name="TimeValid" ColumnName="TimeValid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMac">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.UserMac">
+              <MappingFragment StoreEntitySet="UserMac">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+                <ScalarProperty Name="DateChange" ColumnName="DateChange" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VolEvent">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.VolEvent">
+              <MappingFragment StoreEntitySet="VolEvent">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Place" ColumnName="Place" />
+                <ScalarProperty Name="StartDT" ColumnName="StartDT" />
+                <ScalarProperty Name="EndDT" ColumnName="EndDT" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="NumUsers" ColumnName="NumUsers" />
+                <ScalarProperty Name="Org" ColumnName="Org" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="Importants" ColumnName="Importants" />
+                <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VolEventToUserRef">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.VolEventToUserRef">
+              <MappingFragment StoreEntitySet="VolEventToUserRef">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VolEventId" ColumnName="VolEventId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="DateConnect" ColumnName="DateConnect" />
+                <ScalarProperty Name="DateDisconnect" ColumnName="DateDisconnect" />
+                <ScalarProperty Name="DateDelete" ColumnName="DateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VolImageToEventRef">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.VolImageToEventRef">
+              <MappingFragment StoreEntitySet="VolImageToEventRef">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VolEventId" ColumnName="VolEventId" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VolImg">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.VolImg">
+              <MappingFragment StoreEntitySet="VolImg">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VolOrganization">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.VolOrganization">
+              <MappingFragment StoreEntitySet="VolOrganization">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VolOrgToUserRef">
+            <EntityTypeMapping TypeName="u1436679_VolEventsBaseModel.VolOrgToUserRef">
+              <MappingFragment StoreEntitySet="VolOrgToUserRef">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="VolOrgId" ColumnName="VolOrgId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="DateConnect" ColumnName="DateConnect" />
+                <ScalarProperty Name="DateDisconnect" ColumnName="DateDisconnect" />
+                <ScalarProperty Name="DateDelete" ColumnName="DateDelete" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
