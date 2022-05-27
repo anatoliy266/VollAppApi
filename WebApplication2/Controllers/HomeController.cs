@@ -6,7 +6,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-using WebApplication2.Middleware;
 using WebApplication2.Models;
 
 namespace WebApplication2.Controllers

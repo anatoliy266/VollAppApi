@@ -7,10 +7,11 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Cors;
 using System.Xml.Linq;
 
 using MailKit.Net.Smtp;
+
+using Microsoft.AspNetCore.Cors;
 
 using MimeKit;
 
@@ -31,7 +32,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/getvolevents")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetEvents()
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -54,7 +54,6 @@ namespace WebApplication2.Api
         /// <param name="id">идентификатор события</param>
         /// <returns></returns>
         [Route("api/v2/actions/getvolevent/{id}")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetEvent(int id)
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -74,7 +73,6 @@ namespace WebApplication2.Api
         /// Добавляет новое событие
         /// </summary>
         [Route("api/v2/actions/addvolevent")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> addevent()
         {
@@ -117,7 +115,6 @@ namespace WebApplication2.Api
         /// <param name="id">id события</param>
         /// <returns></returns>
         [Route("api/v2/actions/geteventmembers/{id}")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetEventMembers(int id)
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -139,7 +136,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/assignusertoevent")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> AssignUserToEvent()
         {
@@ -186,7 +182,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/getorganizations")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetOrganizations()
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -210,7 +205,6 @@ namespace WebApplication2.Api
         /// <param name="id">идентификатор организации</param>
         /// <returns></returns>
         [Route("api/v2/actions/getorganization/{id}")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetOrganizations(int id)
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -233,7 +227,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/addorganization")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> AddOrganization()
         {
@@ -273,7 +266,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/assignusertoorg")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> AssignUserToOrg()
         {
@@ -314,7 +306,6 @@ namespace WebApplication2.Api
         /// <param name="id">id ивента</param>
         /// <returns>список изображений ивента</returns>
         [Route("api/v2/actions/getimages/{id}")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetImages(int id)
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -338,7 +329,6 @@ namespace WebApplication2.Api
         /// 
 
         [Route("api/v2/actions/addimage")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> AddImange()
         {
@@ -368,7 +358,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/getinfopages")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetInfoPages()
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -392,7 +381,6 @@ namespace WebApplication2.Api
         /// <param name="id"></param>
         /// <returns></returns>
         [Route("api/v2/actions/getinfopage/{id}")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetInfoPages(int id)
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -417,7 +405,6 @@ namespace WebApplication2.Api
         /// <returns>Guid пользователя</returns>
         /// 
         [Route("api/v2/actions/auth")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> Auth()
         {
@@ -498,7 +485,6 @@ namespace WebApplication2.Api
         /// <returns></returns>
         /// 
         [Route("api/v2/actions/authconfirm")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> AuthConfirm()
         {
@@ -555,7 +541,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/changeuserproperties")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> ChangeUserProperties()
         {
@@ -583,7 +568,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/getuser")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> GetUser()
         {
@@ -705,7 +689,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/getuserproperties")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> GetUserProperties()
         {
@@ -751,7 +734,6 @@ namespace WebApplication2.Api
         /// <param name="id">id юзера</param>
         /// <returns></returns>
         [Route("api/v2/actions/getuservolevents/{id}")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetUserEvents(int id)
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -774,7 +756,6 @@ namespace WebApplication2.Api
         /// <param name="id"></param>
         /// <returns></returns>
         [Route("api/v2/actions/getuservoleventscount/{id}")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetUserEventsCount(int id)
         {
             var logger = LogManager.GetCurrentClassLogger();
@@ -796,7 +777,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/updateuserimage")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> UpdateUserImage()
         {
@@ -839,7 +819,6 @@ namespace WebApplication2.Api
         /// </summary>
         /// <returns></returns>
         [Route("api/v2/actions/addcity")]
-        [EnableCors(origins: "*", headers: "*", methods: "*")]
         [HttpPost]
         public async Task<IHttpActionResult> AddCity()
         {
